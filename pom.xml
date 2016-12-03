@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.ycdr</groupId>
-  <artifactId>wmzj</artifactId>
+  <groupId>com.ycdr.webapp</groupId>
+  <artifactId>webapp</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>wmzj Maven Webapp</name>
+  <name>wmjz Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
       <spring.version>4.2.7.RELEASE</spring.version>
@@ -18,8 +18,8 @@
 	  <mysql-connector.version>5.1.25</mysql-connector.version>
 	  <druid.version>1.0.18</druid.version>
 	  <maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
-	  <project.build.sourceEncoding></project.build.sourceEncoding>
-	  <JDK.version>1.7</JDK.version>
+	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  <JDK.version>1.8</JDK.version>
 	  <maven-war-plugin.version>2.3</maven-war-plugin.version>
 	  	<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
   </properties>
@@ -51,7 +51,7 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
-		<plugin>
+			<!--<plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.1</version>
@@ -59,15 +59,32 @@
                     <uriEncoding>UTF-8</uriEncoding>
                     <server>tomcat7</server>
                 </configuration>
-	            </plugin>  
-			<!-- <plugin>
+	            </plugin>-->
+		  <!-- jetty 热部署 8.1.1.v20120215-->
+		<!--  <plugin>
+			  <groupId>org.eclipse.jetty</groupId>
+			  <artifactId>jetty-maven-plugin</artifactId>
+			  <version>9.3.14.v20161028</version>
+			  <configuration>
+				  &lt;!&ndash;热部署扫描时间（此处填写0，表示热部署扫描由JRebel完成）&ndash;&gt;
+				  <scanIntervalSeconds>0</scanIntervalSeconds>
+				  <stopKey>foo</stopKey>
+				  <stopPort>9999</stopPort>
+				 &lt;!&ndash; webAppConfig->contextPath: 热部署的项目名（比如<contextPath>/springmvc</contextPath>）&ndash;&gt;
+				  <webAppConfig>
+					  <contextPath>/wmjz</contextPath>
+					  <defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
+				  </webAppConfig>
+			  </configuration>
+		  </plugin>-->
+	  <!--<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.2.2.v20140723</version>
 				<configuration>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<scanIntervalSeconds>1</scanIntervalSeconds>
 				</configuration>
-			</plugin> -->
+			</plugin>-->
            <!--  <plugin>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-maven-plugin</artifactId>
@@ -147,6 +164,12 @@
 		<artifactId>jersey-container-servlet</artifactId>
 		<version>${jersey.version}</version>
 	</dependency>
+	   <!-- media type -->
+	   <dependency>
+		   <groupId>org.glassfish.jersey.media</groupId>
+		   <artifactId>jersey-media-moxy</artifactId>
+		   <version>${jersey.version}</version>
+	   </dependency>
   <!-- jersey spring -->
 	<dependency>
 	    <groupId>org.glassfish.jersey.ext</groupId>

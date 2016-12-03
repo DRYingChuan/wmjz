@@ -6,10 +6,11 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 /**
  * <p>AirResourceConfig class.</p>
- *
+ *@ApplicationPath("/webapp/*")
  * @author hanl
  * @version $Id: $Id
  */
+@ApplicationPath("webapp/*")
 public class AirResourceConfig extends ResourceConfig {
     /**
      * <p>Constructor for AirResourceConfig.</p>

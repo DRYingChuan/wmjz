@@ -1,5 +1,6 @@
 package com.ycdr.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,23 +10,30 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Table(name="JPA_PERSONS")
 @Entity
-public class Person {
+@XmlRootElement
+public class Person implements Serializable {
 
 	private Integer id;
+
 	private String lastName;
 
 	private String email;
+
 	private Date birth;
-	
+
 	private Address address;
-	
+
 	private Integer addressId;
 
 	@GeneratedValue
 	@Id
+	@XmlAttribute(name = "persoin_id")
 	public Integer getId() {
 		return id;
 	}
@@ -33,7 +41,7 @@ public class Person {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	@XmlAttribute(name = "lastName")
 	public String getLastName() {
 		return lastName;
 	}
@@ -41,7 +49,7 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	@XmlAttribute(name = "email")
 	public String getEmail() {
 		return email;
 	}
@@ -49,7 +57,7 @@ public class Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	@XmlAttribute(name = "birth")
 	public Date getBirth() {
 		return birth;
 	}
@@ -59,6 +67,7 @@ public class Person {
 	}
 	
 	@Column(name="ADD_ID")
+	@XmlAttribute(name = "addss_id")
 	public Integer getAddressId() {
 		return addressId;
 	}
@@ -66,6 +75,7 @@ public class Person {
 	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
 	}
+
 
 	@JoinColumn(name="ADDRESS_ID")
 	@ManyToOne
