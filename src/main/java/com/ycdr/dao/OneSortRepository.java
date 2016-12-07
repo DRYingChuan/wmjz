@@ -1,9 +1,12 @@
 package com.ycdr.dao;
 
 import com.ycdr.domain.Book;
-import com.ycdr.domain.Wmsj;
+import com.ycdr.domain.PerfectOneSort;
+import com.ycdr.domain.PerfectTwoSort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+
+import java.util.List;
 
 /**
  * 1. Repository 是一个空接口. 即是一个标记接口
@@ -23,10 +26,9 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * 若需要使用级联属性, 则属性之间使用 _ 进行连接. 
  */
 //@RepositoryDefinition(domainClass=Person.class,idClass=Integer.class)
-public interface WmsjRepsotory extends
-	JpaRepository<Wmsj, Integer>,
-	JpaSpecificationExecutor<Wmsj>{
-
-	
+public interface OneSortRepository extends
+	JpaRepository<PerfectOneSort, Integer>,
+	JpaSpecificationExecutor<PerfectOneSort>{
+	List<PerfectOneSort> findByIncAexp(Integer incAexp);
 }
  

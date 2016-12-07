@@ -1,9 +1,8 @@
 package com.ycdr.dao;
 
+import com.ycdr.domain.PerfectTwoSort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-
-import com.ycdr.domain.Person;
 
 /**
  * 1. Repository 是一个空接口. 即是一个标记接口
@@ -12,6 +11,7 @@ import com.ycdr.domain.Person;
  * 
  * 3. 实际上, 也可以通过 @RepositoryDefinition 注解来替代继承 Repository 接口
  */
+
 /**
  * 在 Repository 子接口中声明方法
  * 1. 不是随便声明的. 而需要符合一定的规范
@@ -22,10 +22,8 @@ import com.ycdr.domain.Person;
  * 若需要使用级联属性, 则属性之间使用 _ 进行连接. 
  */
 //@RepositoryDefinition(domainClass=Person.class,idClass=Integer.class)
-public interface PersonRepsotory extends 
-	JpaRepository<Person, Integer>,
-	JpaSpecificationExecutor<Person>{
-
-	
+public interface TwoSortRepository extends
+	JpaRepository<PerfectTwoSort, Integer>,
+	JpaSpecificationExecutor<PerfectTwoSort>{
 }
  

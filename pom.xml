@@ -13,15 +13,16 @@
   	  <spring.data.version>1.12.3.RELEASE</spring.data.version>
   	  <spring.data.jpa.version>1.10.1.RELEASE</spring.data.jpa.version>
 	  <servlet.version>3.0.1</servlet.version>
-	  <jersey.version>2.9</jersey.version>
-	  <slf4j.version>1.2.16</slf4j.version>
+	  <jersey.version>2.15</jersey.version>
+	  <slf4j.version>1.7.21</slf4j.version>
 	  <mysql-connector.version>5.1.25</mysql-connector.version>
 	  <druid.version>1.0.18</druid.version>
 	  <maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
 	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	  <JDK.version>1.8</JDK.version>
+	  <log4j.version>1.2.17</log4j.version>
 	  <maven-war-plugin.version>2.3</maven-war-plugin.version>
-	  	<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+	  <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
   </properties>
    <build>
       <plugins>
@@ -164,6 +165,22 @@
 		<artifactId>jersey-container-servlet</artifactId>
 		<version>${jersey.version}</version>
 	</dependency>
+	   <dependency>
+		   <groupId>org.glassfish.jersey.ext</groupId>
+		   <artifactId>jersey-mvc</artifactId>
+		   <version>${jersey.version}</version>
+	   </dependency>
+	   <dependency>
+		   <groupId>org.glassfish.jersey.ext</groupId>
+		   <artifactId>jersey-mvc-jsp</artifactId>
+		   <version>${jersey.version}</version>
+	   </dependency>
+	 <!--  <dependency>
+		   <groupId>org.glassfish.jersey.ext</groupId>
+		   <artifactId>jersey-mvc-mustache</artifactId>
+		   <version>2.9</version>
+	   </dependency>-->
+
 	   <!-- media type -->
 	   <dependency>
 		   <groupId>org.glassfish.jersey.media</groupId>
@@ -206,6 +223,25 @@
 	    <artifactId>commons-logging</artifactId>
 	    <version>1.2</version>
 	</dependency>
+	   <!-- log -->
+	  <!-- <dependency>
+		   <groupId>org.slf4j</groupId>
+		   <artifactId>slf4j-api</artifactId>
+		   <version>${slf4j.version}</version>
+	   </dependency>
+	   <dependency>
+		   <groupId>log4j</groupId>
+		   <artifactId>log4j</artifactId>
+		   <version>${log4j.version}</version>
+	   </dependency>
+	   -->
+	   <dependency>
+		   <groupId>org.slf4j</groupId>
+		   <artifactId>slf4j-log4j12</artifactId>
+		   <version>${slf4j.version}</version>
+	   </dependency>
+
+
 
   </dependencies>
 

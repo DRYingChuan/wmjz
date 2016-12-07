@@ -1,16 +1,16 @@
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh_CN">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>完美记账软件</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <!--你自己的样式文件 -->
-    <link href="css/your-style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/jquery.datetimepicker.css" type="text/css">
+    <link href="../../css/your-style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/jquery.datetimepicker.css" type="text/css">
     <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -50,12 +50,12 @@
         .tjumbotron .add-bout{height:680px;float: left;} 
         .tjumbotron .add-bout .row .col-md-6{width:560px;height:178px;border:1px solid #00F;margin:10px 0px 0px 15px;background: rgba(0, 0, 0, 0.4);}
         .tjumbotron .add-bout .row .col-md-12{width:1135px;height:178px;border:1px solid #000;margin:10px 0px 0px 15px;background: rgba(0, 0, 0, 0.4);}
-        .tjumbotron .add-bout .row .col-fl{background-image: url(image/Market.jpg);background-size: 560px 178px;background-repeat: no-repeat;}
-        .tjumbotron .add-bout .row .col-zh{background-image: url(image/Money.jpg);background-size: 560px 178px;background-repeat: no-repeat;}
-        .tjumbotron .add-bout .row .col-je{background-image: url(image/Card.jpg);background-size: 560px 178px;background-repeat: no-repeat;}
-        .tjumbotron .add-bout .row .col-cy{background-image: url(image/Family.jpg);background-size: 1135px 178px;background-repeat: no-repeat;}
-        .tjumbotron .add-bout .row .col-sj{background-image: url(image/Time.jpg);background-size: 1135px 178px;background-repeat: no-repeat;}
-        .tjumbotron .add-bout .row .col-bz{background-image: url(image/Description.jpg);background-size: 1135px 178px;background-repeat: no-repeat;}
+        .tjumbotron .add-bout .row .col-fl{background-image: url(../../image/Market.jpg);background-size: 560px 178px;background-repeat: no-repeat;}
+        .tjumbotron .add-bout .row .col-zh{background-image: url(../../image/Money.jpg);background-size: 560px 178px;background-repeat: no-repeat;}
+        .tjumbotron .add-bout .row .col-je{background-image: url(../../image/Card.jpg);background-size: 560px 178px;background-repeat: no-repeat;}
+        .tjumbotron .add-bout .row .col-cy{background-image: url(../../image/Family.jpg);background-size: 1135px 178px;background-repeat: no-repeat;}
+        .tjumbotron .add-bout .row .col-sj{background-image: url(../../image/Time.jpg);background-size: 1135px 178px;background-repeat: no-repeat;}
+        .tjumbotron .add-bout .row .col-bz{background-image: url(../../image/Description.jpg);background-size: 1135px 178px;background-repeat: no-repeat;}
         .tjumbotron .add-bout .row .col-md-6 .col-zz{width:560px;height:178px;background: rgba(0, 0, 0, 0.6);margin-left:-15px;}
         .tjumbotron .add-bout .row .col-md-12 .col-zz12{width:1135px;height:178px;background: rgba(0, 0, 0, 0.6);margin-left:-15px;}
         .tjumbotron .add-bout .row .col-md-6 .col-zz span{color: #FFF;font-size: 30px;}
@@ -93,7 +93,6 @@
         .fl-tc .col-i-yc ul li span{color:#252525;font-size:23px;}
     </style>
 </head>
-
 <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -112,10 +111,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">首页</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-file">流水</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-file"></span>流水</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> 统计</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-star"></span>小工具</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-th-large"></span>更多</a></li>
+                    <li><a href="${pageContext.request.contextPath}/webapp/sort"><span class="glyphicon glyphicon-th-large"></span>更多</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-cog"></span>设置</a></li>
                 </ul>
 
@@ -274,7 +273,7 @@
                           
                             <div class="add-input zh">
                                <span>点击选择分类</span>
-                               <img src="image/input-sj.png" alt="">
+                               <img src="../../image/input-sj.png" alt="">
                             </div>
                                <ul class="mb-yc-zh">
                                  <li class="mb-yc-bj"><span class="mb-yc-xz">点击选择分类1</span></li>
@@ -298,7 +297,7 @@
                               <span clas="zz-span">成员</span>
                             <div class="add-input cy">
                               <span>点击选择分类</span>
-                               <img src="image/input-sj.png" alt="">
+                               <img src="../../image/input-sj.png" alt="">
                             </div>
                               <ul class="mb-yc-cy">
                                  <li class="mb-yc-bj"><span class="mb-yc-xz">点击选择分类1</span></li>
@@ -358,7 +357,7 @@
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
    <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="js/jquery.datetimepicker.js"></script>
+    <script src="../../js/jquery.datetimepicker.js"></script>
 
     <script>
     $(function(){
