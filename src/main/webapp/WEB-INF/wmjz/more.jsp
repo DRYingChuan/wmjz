@@ -30,7 +30,7 @@
         .more ul li:hover{background-color: #D3D3D3;}
         .sort{min-height: 600px;display: none;}
         .sort .sort-title{height: 50px;margin: 0 -60px;background-color: #D8D8D8;}
-        .sort .sort-title .col-sm-8 span{font-size: 24px;color:#000;display: inline-block;line-height: 50px;margin-left: 30px;}
+        .sort .sort-title .col-sm-8 span{font-size: 24px;color:#000;display: inline-block;line-height: 50px;}
         .sort .sort-title .col-sm-4 ul{height: 50px;}
         .sort .sort-title .col-sm-4 ul li{list-style: none;height: 50px;width: 50px;float: right;line-height: 50px;}
         .sort .sort-title .col-sm-4 ul li span{line-height: 50px;right: 15px;}
@@ -103,19 +103,21 @@
         <div class="sort-title">
             <div class="row">
                 <div class="col-sm-8">
+                    <span class="glyphicon glyphicon-arrow-left" style="font-size:24px;color:#000;"></span>
                     <span>分类管理</span>
+                    <input type="hidden" value="">
                 </div>
                 <div class="col-sm-4">
-                    <ul class="sort-onenav" style="display: block">
-                        <li class="sort-onenav"><span class="glyphicon glyphicon-pencil" style="font-size:26px;color:#000;"></span>
+                    <ul class='sort-onenav' style="display: block">
+                        <li class="sort-onenav-edit"><span class="glyphicon glyphicon-pencil" style="font-size:26px;color:#000;"></span>
                         </li>
                         <li data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus" style="font-size:26px;color:#000;"></span></li>
 
                     </ul>
                     <ul class="sort-twonav" style="display: none">
-                        <li><span class="glyphicon glyphicon-remove" style="font-size:26px;color:#000;"></span>
+                        <li class="sort-twonav-del"><span class="glyphicon glyphicon-remove" style="font-size:26px;color:#000;"></span>
                         </li>
-                        <li data-toggle="modal" data-target="#deModal"><span class="glyphicon glyphicon-trash" style="font-size:26px;color:#000;"></span></li>
+                        <li data-toggle="modal"  data-target="#deModal"><span class="glyphicon glyphicon-trash" style="font-size:26px;color:#000;"></span></li>
 
                     </ul>
                 </div>
@@ -124,10 +126,11 @@
 
         <div class="sort-tag">
             <ul class="inav">
-                <a href="">
-                    <li class="imark"><span>支出</span></li>
+                <a href="javascript:moreSort(1)">
+                    <li class="imark">
+                        <span>支出</span></li>
                 </a>
-                <a href="">
+                <a href="javascript:moreSort(2)">
                     <li><span>收入</span></li>
                 </a>
             </ul>
@@ -139,125 +142,124 @@
                     <div class="sort-check"><input type="checkbox" id="checkbox_a2" class="chk_1" /><label for="checkbox_a2"></label></div>
                     <div class="onesort"><span>居家物业</span></div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="sort-check"><input type="checkbox" id="checkbox_a3" class="chk_1" /><label for="checkbox_a3"></label></div>
-                    <div class="onesort"><span>居家物业</span></div>
-                </div>
-                <div class="col-md-4">
-                    <div class="sort-check"><input type="checkbox" id="checkbox_a4" class="chk_1" /><label for="checkbox_a4"></label></div>
-                    <div class="onesort"><span>居家物业</span></div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="sort-check"><input type="checkbox" id="checkbox_a5" class="chk_1" /><label for="checkbox_a2"></label></div>
-                    <div class="onesort"><span>居家物业</span></div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="sort-check"><input type="checkbox" id="checkbox_a2" class="chk_1" /><label for="checkbox_a2"></label></div>
-                    <div class="onesort"><span>居家物业</span></div>
-                </div>
-                <div class="col-md-4">
-                    <div class="sort-check"><input type="checkbox" id="checkbox_a2" class="chk_1" /><label for="checkbox_a2"></label></div>
-                    <div class="onesort"><span>居家物业</span></div>
-                </div>
 --%>
             </div>
-
-
         </div>
     </div>
+</div>
+<!--more  结束-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:300px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    添加分类
+                </h4>
+            </div>
+            <div class="modal-body" style="margin-left:40px;">
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="input-group">
+                   <input type="text" id="onSort" value="" class="form-control" placeholder="分类名称">
+                    <br><br>
+                    <input type="text" id="twoSort" value="" class="form-control" placeholder="子分类名称">
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-right:93px;">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary btn-primary-add">
+                    提交
+                </button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+ <div class="modal fade" id="deModal" tabindex="-1" role="dialog" aria-labelledby="deModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:300px;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        添加分类
-                    </h4>
+               <%--    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="modal-body-none-close">
+                        ×
+                    </button>--%>
+                   <%-- <h4 class="modal-title" id="deModalLabel">
+                        模态框（Modal）标题
+                    </h4>--%>
                 </div>
-                <div class="modal-body" style="margin-left:40px;">
-
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="分类名称">
-                        <br><br>
-                        <input type="text" class="form-control" placeholder="子分类名称">
+                <div class="modal-body" style="color: #F2635C;">
+                    <div class="modal-body-none" style="color: #f2635c;display: none">
+                        至少选择一个进行删除
                     </div>
-                </div>
-                <div class="modal-footer" style="padding-right:93px;">
+                    <div class="modal-body-dele" style="color: #F2635C;">
+                        删除该分类将导致该分类底下的记录全部被删除，是否继续
+                    </div>
+               </div>
 
+                <div class="modal-footer" style="padding-right:85px;" >
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                     </button>
-                    <button type="button" class="btn btn-primary">
-                        提交
+                    <button type="button" class="btn btn-primary  btn-primary-dele" id="btn-dele-comt" >
+                        提交更改
                     </button>
-
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-        <div class="modal fade" id="deModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" style="width:300px;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title" id="deModalLabel">
-                            批量删除分类
-                        </h4>
-                    </div>
-                    <div class="modal-body" style="margin-left:40px;">
+            </div>
+        </div>
+</div>
 
-                        <div class="input-group">
-                           你确认要批量删除吗，这个删除不可恢复
-                        </div>
-                    </div>
-                    <div class="modal-footer" style="padding-right:93px;">
-
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                            提交
-                        </button>
-
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.mod
-        <!--more  结束-->
         <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
         <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>
-            function moreSort() {
+
+            <!--第一层分类封函数-->
+            function moreSort(incaexp) {
+                $(".sort-content .row").empty();
+                if(incaexp==2){
+                    $(".inav li:first").removeClass("imark");
+                    $(".inav li:eq(1)").addClass("imark");
+                }
+                if(incaexp==1){
+                    $(".inav li:first").addClass("imark");
+                    $(".inav li:eq(1)").removeClass("imark");
+                }
                 $.ajax({
-                    url : '${pageContext.request.contextPath}/webapp/sort/PerfectOneSorts',
+                    url : '${pageContext.request.contextPath}/webapp/sort/PerfectOneSorts?incaexp='+incaexp,
                     type : 'GET',
                     dataType : 'json',
                     success : function(data){
-                        var row= $(".sort-content .row").html()
-                        $.each(data.perfectOneSortsList.PerfectOneSort,function (index,item) {
-                            row+="<div class='col-md-4'><div class='sort-check'><input type='checkbox' id='checkbox_a" +item.onesortid+
-                                    "' class='chk_1' /><label for='checkbox_a" +item.onesortid+
-                                    "'></label></div><div class='onesort'><span>"+item.oneSortName+"</span></div></div>"
-                        })
-                        $(".sort-content .row").html(row);
+                        fsomHtmlOne(data);
+                        /* 绑定未来事件*/
+                        $('.onesort').on("click",function () {
+                            /*$('.sort-title .col-sm-8').find("span").eq(0).show();*/
+                            var input=$(this).prev().find("input").val();
+                            var span=$(this).find("span").html();
+
+                            $('.sort-tag').hide();
+                            $('.sort-title .col-sm-8').find("span").eq(1).html(span);
+                            $('.sort-title .col-sm-8').find("input").val(input);
+                            findSortTwo(input);
+                        });
+
                     }
                 });
-
             }
+
+            <!-- 分类-显示函数-->
             $(function(){
                 $('.more-li').click(function(){
+
                     $('.more').toggle(300);
                     var trade=$(this).hasClass("more-trade");
                     var user=$(this).hasClass("more-user");
                     var sort=$(this).hasClass("more-sort");
                     if(sort){
                         $('.sort').toggle(300);
-                        moreSort();
+                        moreSort(1);
                     }
                     if(user){
                         $('.user').toggle(300);
@@ -265,9 +267,10 @@
                     if(trade){
                         $('.trade').toggle(300);
                     }
-                })
+                });
 
-            })
+            });
+            <!-- 远程获取调用统一处理方法，目前没有启用 -->
             function rest(restUrl, httpMethod, param, contenttype, datatype, callback) {
                 jQuery('#resultDiv').html("Loading...");
                 var request = jQuery.ajax({type : httpMethod, url : restUrl, data : param, contentType : contenttype, dataType : datatype});
@@ -286,19 +289,32 @@
                     jQuery('#resultDiv').html(errorThrown + " status=" + textStatus.status);
                 });
             }
+            <!-- 未启用 -->
             function renderPut(data) {
                 //$('#resultDiv').html("DONE! id=" + data.bookId);
             }
+            <!--一级分类添加方法 -->
             $(function() {
-                $(".btn-primary").click(function(){
+                $(".btn-primary-add").click(function(){
+                    var sort = new Object();
                     var  url='${pageContext.request.contextPath}/webapp/sort';
                     var contentType='application/json';
-                    var oneSort=$("#onSort").val();
-                    var twoSort=$("#twoSort").val();
-                    var sort = new Object();
-                    sort.oneSortName=oneSort;
-                    sort.twoSortName=twoSort;
+                    var temp1= $(".sort-tag").is(":visible");//是否可见
+                    if(!temp1){
+                        var oneSortId=$('.sort-title .col-sm-8').find("input").val();
+                        var twoSort=$("#twoSort").val();
+                        sort.oneSortId=oneSortId;
+                        sort.twoSortName=twoSort;
+                    }else{
+                        var incAexp=Pdimark();
+                        var oneSort=$("#onSort").val();
+                        var twoSort=$("#twoSort").val();
+                        sort.oneSortName=oneSort;
+                        sort.twoSortName=twoSort;
+                    }
+                    sort.incAexp=incAexp;
                     var json = JSON.stringify(sort);
+                    /*alert(json);*/
                     /* rest(url, 'POST', json, contentType, 'json', renderPut);*/
                     $.ajax({
                         url: url,
@@ -310,24 +326,185 @@
                         success: function () { //如果执行成功，那么执行此方法
                             $('#myModal').modal('hide');
                             $(".sort-content .row").empty();
-                            moreSort();
+                            var temp1= $(".sort-tag").is(":visible");
+
+                            if(!temp1){
+                                findSortTwo(oneSortId);
+                            }else {
+                                var incaexp=Pdimark();
+                                moreSort(incaexp);
+                            }
                         },
                         error: function (err) { //如果执行不成功，那么执行此方法
-                            alert("err:" + 数据错误请检测);
+                            /*alert("err:" + 数据错误请检测);*/
                         }
                     });
                 });
-
-
-                $('.sort-onenav').click(function(){
-                    $('.sort-onenav').hide();
-                    $('.sort-twonav').show(function () {
-                        $('.onesort').css("width","85%")
-                        $('.sort-check').show();
-                    });
-                })
             });
 
+            $(function () {
+                <!--编辑按钮-->
+                $('.sort-onenav-edit').click(function(){
+                    $(this).parent().hide();
+                    $('.sort-twonav').show(function () {
+                        $('.onesort').css("width","85%");
+                        $('.sort-check').show();
+                    });
+                });
+                <!--取消按钮-->
+                $('.sort-twonav-del').click(function () {
+                    $(this).parent().hide();
+                    $('.sort-onenav').show(function () {
+                        $('.onesort').css("width","100%")
+                        $('.sort-check').hide();
+                    });
+                });
+
+                $('.sort-twonav-demode').click(function () {
+                    alert(1)
+                    var k=$('#checkbox_a1').css("content");
+                    alert(k)
+                });
+              $('#myModal').on('show.bs.modal', function () {
+                  var temp1= $(".sort-tag").is(":visible");//是否可见
+                  if(!temp1){
+                      $("#onSort").remove();
+                      $('.input-group br').remove();
+                  }
+
+                })
+                $('#deModal').on('hide.bs.modal', function () {
+                    $(".modal-body-none").hide();
+                    $(".modal-body-dele").show();
+                    $("#btn-dele-comt").show();
+                })
+                $('.btn-primary-dele').click(function () {
+                    var oneSortId=$('.sort-title .col-sm-8').find("input").val();
+                    var id_array=new Array();
+                    $(".chk_1[type='checkbox']").each(function(){
+                        if($(this).is(':checked')){
+                            id_array.push($(this).val());//向数组中添加元素
+                        }
+                    });
+                    var sortDelete=id_array.join(',');//将数组元素连接起来以构建一个字符串
+                    if(sortDelete==null||sortDelete==""){
+                        $(".modal-body-none").show();
+                        $(".modal-body-dele").hide();
+                        $("#btn-dele-comt").hide();
+                        return;
+                    }
+                    var sort = new Object();
+                    var  url='${pageContext.request.contextPath}/webapp/sort';
+                    var contentType='application/json';
+                    var temp1= $(".sort-tag").is(":visible");//是否可见
+                    if(!temp1){
+                        sort.twoDelSortId=sortDelete;
+                    }else{
+                        sort.oneDelSortId=sortDelete;
+                    }
+                    var json = JSON.stringify(sort);
+                   /* alert(json);*/
+                   $.ajax({
+                       url:url,
+                       data: json,    //参数，如果没有，可以为null
+                       type: "DELETE",     //提交方式
+                       contentType: contentType,   //内容类型
+                       dataType: "json",     //类型
+                       //提交的页面，方法名
+                       success: function (data) { //如果执行成功，那么执行此方法
+                           $('#deModal').modal('hide');
+                           $(".sort-content .row").empty();
+                           $('.sort-twonav-del').parent().hide();
+                           $('.sort-onenav').show(function () {
+                               $('.onesort').css("width","100%")
+                               $('.sort-check').hide();
+                           });
+                           if(!temp1){
+                               findSortTwo(oneSortId);
+                           }else {
+
+                               var incAexp=Pdimark();
+                               moreSort(incAexp);
+                           }
+                       },
+                       error: function (err) { //如果执行不成功，那么执行此方法
+                           alert("err:" + 数据错误请检测);
+                       }
+                   })
+                })
+            })
+
+            <!--二级分类-->
+
+            $(function(){
+
+            })
+            /*判断支出还是收入*/
+            function Pdimark() {
+                var incAexp = 1;
+                if (!$('.inav li:first').hasClass("imark")) {
+                    incAexp = 2;
+                }
+                return incAexp;
+            }
+            /*json封装 one*/
+            function fsomHtmlOne(data) {
+                var row= $(".sort-content .row").html()
+                $.each(data.perfectOneSortsList.PerfectOneSort,function (index,item) {
+                    row+="<div class='col-md-4'><div class='sort-check'><input value='"+item.onesortid+"' type='checkbox' id='checkbox_a" +item.onesortid+
+                            "' class='chk_1' /><label for='checkbox_a" +item.onesortid+
+                            "'></label></div><div class='onesort'><span>"+item.oneSortName+"</span></div></div>"
+                })
+                $(".sort-content .row").html(row);
+            }
+            /*json封装 two*/
+            function fsomHtmlTwo(data) {
+                var row= $(".sort-content .row").html()
+                $.each(data.perfectTwoSort.PerfectTwoSort,function (index,item) {
+                    row+="<div class='col-md-4'><div class='sort-check'><input value='"+item.twosortid+"' type='checkbox' id='checkbox_a" +item.twosortid+
+                            "' class='chk_1' /><label for='checkbox_a" +item.twosortid+
+                            "'></label></div><div class='onesort'><span>"+item.twoSortName+"</span></div></div>"
+                })
+                $(".sort-content .row").html(row);
+            }
+            /*查询二级分类*/
+            function findSortTwo(input) {
+                $(".sort-content .row").empty();
+                var  url='${pageContext.request.contextPath}/webapp/sort/'+input;
+                $.ajax({
+                    url: url, //参数，如果没有，可以为null
+                    type: "GET",     //提交方式//内容类型
+                    dataType: "json",     //类型
+                    //提交的页面，方法名
+                    success: function (data) { //如果执行成功，那么执行此方法
+                        fsomHtmlTwo(data)
+                    },
+                    error: function (err) { //如果执行不成功，那么执行此方法
+                        /*alert("err:" + 数据错误请检测);*/
+                    }
+                })
+            }
+
+
+
+         $(function () {
+             $('.sort-title .col-sm-8').find("span").eq(0).click(function () {
+                 /*   一级分类返回首页*/
+                var temp=$('.sort-tag').is(":visible");
+                 if(!temp){
+                     /*   二级分类返回一层*/
+                     $('.sort-tag').show();
+                     /* $('.sort-title .col-sm-8').find("span").eq(0).hide();*/
+                     $('.sort-title .col-sm-8').find("span").eq(1).html("分类管理");
+                     var incAexp=Pdimark();
+                     moreSort(incAexp);
+                 }else{
+                     $('.more').toggle(300);
+                     $('.sort').toggle(300);
+                 }
+
+             })
+         })
         </script>
 </body>
 
