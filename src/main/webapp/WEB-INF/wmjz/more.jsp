@@ -219,6 +219,7 @@
             <!--第一层分类封函数-->
             function moreSort(incaexp) {
                 $(".sort-content .row").empty();
+                var  url='${pageContext.request.contextPath}/webapp/sort/PerfectOneSorts?incaexp='+incaexp;
                 if(incaexp==2){
                     $(".inav li:first").removeClass("imark");
                     $(".inav li:eq(1)").addClass("imark");
@@ -227,24 +228,30 @@
                     $(".inav li:first").addClass("imark");
                     $(".inav li:eq(1)").removeClass("imark");
                 }
+                //用户
+                if(incaexp==3){
+                    url='${pageContext.request.contextPath}/webapp/user/PerfectUsers';
+                }
                 $.ajax({
-                    url : '${pageContext.request.contextPath}/webapp/sort/PerfectOneSorts?incaexp='+incaexp,
+                    url :url ,
                     type : 'GET',
                     dataType : 'json',
                     success : function(data){
+                        if(incaexp==3){
+                            fuserHtnl(data);
+                        }else{
                         fsomHtmlOne(data);
                         /* 绑定未来事件*/
                         $('.onesort').on("click",function () {
                             /*$('.sort-title .col-sm-8').find("span").eq(0).show();*/
                             var input=$(this).prev().find("input").val();
                             var span=$(this).find("span").html();
-
                             $('.sort-tag').hide();
                             $('.sort-title .col-sm-8').find("span").eq(1).html(span);
                             $('.sort-title .col-sm-8').find("input").val(input);
                             findSortTwo(input);
                         });
-
+                     }
                     }
                 });
             }
@@ -262,7 +269,13 @@
                         moreSort(1);
                     }
                     if(user){
-                        $('.user').toggle(300);
+                        $('.sort').toggle(300);
+                        //隐藏支出收入
+                        $('.sort-tag').hide();
+                        //修改标题
+                        $('.sort-title .col-sm-8').find("span").eq(1).html("用户管理");
+                        moreSort(3);
+
                     }
                     if(trade){
                         $('.trade').toggle(300);
@@ -300,7 +313,12 @@
                     var  url='${pageContext.request.contextPath}/webapp/sort';
                     var contentType='application/json';
                     var temp1= $(".sort-tag").is(":visible");//是否可见
-                    if(!temp1){
+                    var user= $('.sort-title .col-sm-8').find("span").eq(1).html();
+                    if(user=="用户管理"){
+                        url='${pageContext.request.contextPath}/webapp/user'
+                        var twoSort=$("#twoSort").val();
+                        sort.userName=twoSort;
+                    }else if(!temp1&&user!="用户管理"){
                         var oneSortId=$('.sort-title .col-sm-8').find("input").val();
                         var twoSort=$("#twoSort").val();
                         sort.oneSortId=oneSortId;
@@ -314,7 +332,6 @@
                     }
                     sort.incAexp=incAexp;
                     var json = JSON.stringify(sort);
-                    /*alert(json);*/
                     /* rest(url, 'POST', json, contentType, 'json', renderPut);*/
                     $.ajax({
                         url: url,
@@ -327,8 +344,10 @@
                             $('#myModal').modal('hide');
                             $(".sort-content .row").empty();
                             var temp1= $(".sort-tag").is(":visible");
-
-                            if(!temp1){
+                            if(user=="用户管理"){
+                                moreSort(3);
+                                return;
+                            }else if(!temp1&&user!="用户管理"){
                                 findSortTwo(oneSortId);
                             }else {
                                 var incaexp=Pdimark();
@@ -371,6 +390,12 @@
                       $("#onSort").remove();
                       $('.input-group br').remove();
                   }
+                 var user= $('.sort-title .col-sm-8').find("span").eq(1).html();
+                  if(user=="用户管理"){
+                     $('#myModalLabel').html("添加用户");
+                     $('#twoSort').attr('placeholder',"添加用户");
+
+                  }
 
                 })
                 $('#deModal').on('hide.bs.modal', function () {
@@ -397,7 +422,11 @@
                     var  url='${pageContext.request.contextPath}/webapp/sort';
                     var contentType='application/json';
                     var temp1= $(".sort-tag").is(":visible");//是否可见
-                    if(!temp1){
+                    var user= $('.sort-title .col-sm-8').find("span").eq(1).html();
+                    if(user=="用户管理"){
+                        url='${pageContext.request.contextPath}/webapp/user'
+                        sort.userIds=sortDelete;
+                    }else if(!temp1&&user!="用户管理"){
                         sort.twoDelSortId=sortDelete;
                     }else{
                         sort.oneDelSortId=sortDelete;
@@ -419,7 +448,10 @@
                                $('.onesort').css("width","100%")
                                $('.sort-check').hide();
                            });
-                           if(!temp1){
+                           if(user=="用户管理"){
+                               moreSort(3);
+                               return;
+                           }else if(!temp1&&user!="用户管理"){
                                findSortTwo(oneSortId);
                            }else {
 
@@ -435,10 +467,6 @@
             })
 
             <!--二级分类-->
-
-            $(function(){
-
-            })
             /*判断支出还是收入*/
             function Pdimark() {
                 var incAexp = 1;
@@ -467,6 +495,17 @@
                 })
                 $(".sort-content .row").html(row);
             }
+
+            /*json 封装user*/
+            function fuserHtnl(data) {
+                var row= $(".sort-content .row").html()
+                $.each(data.perfectUser,function (index,item) {
+                    row+="<div class='col-md-4'><div class='sort-check'><input value='"+item.userid+"' type='checkbox' id='checkbox_a" +item.userid+
+                            "' class='chk_1' /><label for='checkbox_a" +item.userid+
+                            "'></label></div><div class='onesort'><span>"+item.userName+"</span></div></div>"
+                })
+                $(".sort-content .row").html(row);
+            }
             /*查询二级分类*/
             function findSortTwo(input) {
                 $(".sort-content .row").empty();
@@ -485,12 +524,18 @@
                 })
             }
 
-
-
          $(function () {
              $('.sort-title .col-sm-8').find("span").eq(0).click(function () {
+
+                 var user= $('.sort-title .col-sm-8').find("span").eq(1).html();
+                 if(user=="用户管理"){
+                     $('.more').toggle(300);
+                     $('.sort').toggle(300);
+                     $('.sort-title .col-sm-8').find("span").eq(1).html("分类管理");
+                     return;
+                 }
+                 var temp=$('.sort-tag').is(":visible");
                  /*   一级分类返回首页*/
-                var temp=$('.sort-tag').is(":visible");
                  if(!temp){
                      /*   二级分类返回一层*/
                      $('.sort-tag').show();

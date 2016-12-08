@@ -22,6 +22,10 @@ public class PerfectUser implements Serializable {
         super();
     }
 
+    public PerfectUser(String userName) {
+        this.userName = userName;
+    }
+
     public PerfectUser(Integer userId, String userName, String userPassWord) {
         this.userId = userId;
         this.userName = userName;
