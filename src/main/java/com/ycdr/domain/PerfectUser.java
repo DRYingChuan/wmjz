@@ -26,6 +26,10 @@ public class PerfectUser implements Serializable {
         this.userName = userName;
     }
 
+    public PerfectUser(Integer userId) {
+        this.userId = userId;
+    }
+
     public PerfectUser(Integer userId, String userName, String userPassWord) {
         this.userId = userId;
         this.userName = userName;

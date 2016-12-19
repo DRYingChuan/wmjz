@@ -12,29 +12,38 @@ import java.util.Date;
 @Entity
 @XmlRootElement
 public class PerfectTrade {
+
+
+    /*"twoSortId":"","sum":"","datetimepicker":"2016-12-10 2:13:15","tradeRemark":""*/
     private Integer tradeId;
     //备注
     private String  tradeRemark;
     //用户
     private PerfectUser perfactUser;
     //分类ID
-    private Integer oneSortId;
+    private Integer twoSortId;
     //金额
     private Integer sum;
     //时间
     private Date executionTime;
+    //收入支出 1 收入 2 支出
+    private Integer incAexp;
+
+    private String account;
 
     public PerfectTrade() {
         super();
     }
 
-    public PerfectTrade(Integer tradeId, String tradeRemark, PerfectUser perfactUser, Integer oneSortId, Integer sum, Date executionTime) {
-        this.tradeId = tradeId;
+    public PerfectTrade(String tradeRemark, PerfectUser perfactUser, Integer twoSortId, Integer sum, Date executionTime, Integer incAexp, String account) {
+
         this.tradeRemark = tradeRemark;
         this.perfactUser = perfactUser;
-        this.oneSortId = oneSortId;
+        this.twoSortId = twoSortId;
         this.sum = sum;
         this.executionTime = executionTime;
+        this.incAexp = incAexp;
+        this.account = account;
     }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,13 +74,13 @@ public class PerfectTrade {
     public void setPerfactUser(PerfectUser perfactUser) {
         this.perfactUser = perfactUser;
     }
-    @Column(name ="ONESORTID")
-    public Integer getOneSortId() {
-        return oneSortId;
+    @Column(name ="TWOSORTID")
+    public Integer getTwoSortId() {
+        return twoSortId;
     }
 
-    public void setOneSortId(Integer oneSortId) {
-        this.oneSortId = oneSortId;
+    public void setTwoSortId(Integer twoSortId) {
+        this.twoSortId = twoSortId;
     }
     @Column(name = "SUM")
     public Integer getSum() {
@@ -89,5 +98,22 @@ public class PerfectTrade {
 
     public void setExecutionTime(Date executionTime) {
         this.executionTime = executionTime;
+    }
+
+    @Column(name = "ACCOUNT")
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+    @Column(name = "INCAEXP")
+    public Integer getIncAexp() {
+        return incAexp;
+    }
+
+    public void setIncAexp(Integer incAexp) {
+        this.incAexp = incAexp;
     }
 }

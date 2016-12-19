@@ -15,7 +15,9 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
         <![endif]-->
+    <script src="../../js/reindex.js"></script>
     <style>
         body{background-color: #C0C0C0;font-family: Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
         /*首页面板 CSS*/.container .row hr{border-top: 1px solid #C0C0C0;margin-top: 0px;margin-bottom: 0px;}
@@ -91,6 +93,10 @@
         .fl-tc .col-i-yc ul li{width: 265px;height:45px;list-style: none;margin-left:-40px;margin-top:5px;line-height: 45px;padding-left:5px;}
         .fl-tc .col-i-yc ul li:hover{background-color:#DCDCDC;}
         .fl-tc .col-i-yc ul li span{color:#252525;font-size:23px;}
+        .add-itop .col-sm-4 ul li{list-style: none;height: 60px;width: 50px;float: right;line-height: 50px;}
+        .add-itop .col-sm-4 ul li:hover{list-style: none;height: 60px;width: 50px;float: right;line-height: 60px;background-color:#CFCFCF;}
+        .add-itop .col-sm-4 ul li span{line-height: 60px;right: 11px;}
+        .waring{display:none;width:220px;height: 40px;position: relative;bottom:850px;left:1125px;z-index: 999999;background: rgba(122,117,116,0.9);color:#fff;font-size: 15px;line-height: 40px;padding-left: 20px; }
     </style>
 </head>
 <body>
@@ -232,17 +238,17 @@
 
     <!--添加面板 开始-->
     <div class="container tjumbotron">
-        <div class="add-itop">
+        <div class="add-itop" autocomplete="off">
             <div class="row">
                 <div class="col-sm-8">
                     <span class="tspan">记一笔</span>
                 </div>
                 <div class="col-sm-4">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-file" style="font-size:26px;color:#000;"></span></a></li>
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-file" style="font-size:26px;color:#000;"></span></a></li>
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-file" style="font-size:26px;color:#000;"></span></a></li>
-                         <li role="presentation"><a href="#"><span class="glyphicon glyphicon-file" style="font-size:26px;color:#000;"></span></a></li>
+                        <li role="presentation"><span class="glyphicon glyphicon-remove" style="font-size:26px;color:#000;" ></span></li>
+                        <li role="presentation"><span class="glyphicon glyphicon-file" style="font-size:26px;color:#000;"></span></li>
+                        <li role="presentation"><span class="glyphicon glyphicon-plus" style="font-size:26px;color:#000;"></span></li>
+                         <li role="presentation"><span class="glyphicon glyphicon-floppy-disk" style="font-size:26px;color:#000;"></span></li>
                     </ul>
 
                 </div>
@@ -250,21 +256,22 @@
         </div>
         <div class="add-body">
                 <ul class="inav">
-                    <a href=""><li class="imark"><span>支出</span></li></a>
-                    <a href=""><li><span>支出</span></li></a>
-                     <a href=""><li><span>模板</span></li></a>
+                    <li class="imark"><span><input type="hidden" value="1">支出</span></li>
+                    <li><span><input type="hidden" value="2">支出</span></li>
+                     <li><span><input type="hidden" value="3">模板</span></li>
                 </ul>   
         </div>
+
         <div class="add-bout">
-            <form action="">
+            <form id="trade">
                 <div class="row">
                     <div class="col-md-6 col-fl">
                         <div class="col-zz">
                             <span clas="zz-span">分类</span>
-                            <div class="add-input fl">
+                            <div id="sortclick" class="add-input fl">
                                点击选择分类
                             </div>
-                            <input type="hidden" name="" value="">
+                            <input type="hidden" autocomplete="off" id="twoSortId" name="twoSortId" value="">
                         </div>
                     </div>
                     <div class="col-md-6 col-zh">
@@ -272,16 +279,14 @@
                            <span clas="zz-span">账户</span>
                           
                             <div class="add-input zh">
-                               <span>点击选择分类</span>
+                               <span>现金</span>
                                <img src="../../image/input-sj.png" alt="">
                             </div>
                                <ul class="mb-yc-zh">
-                                 <li class="mb-yc-bj"><span class="mb-yc-xz">点击选择分类1</span></li>
-                                  <li><span class="mb-yc-xz">点击选择分类2</span></li>
-                                   <li><span class="mb-yc-xz">点击选择分类3</span></li>
-                                    <li><span class="mb-yc-xz">点击选择分类4</span></li>
-                            </ul>
-                            <input type="hidden" name="" value="">
+                                 <li class="mb-yc-bj"><span class="mb-yc-xz">现金</span></li>
+                                  <li><span class="mb-yc-xz">信用卡</span></li>
+                               </ul>
+                           <input type="hidden" autocomplete="off" name="account" id="account" value="现金">
                         </div>
                     </div>
                 </div>
@@ -289,31 +294,31 @@
                     <div class="col-md-6 col-je">
                            <div class="col-zz">
                                  <span clas="zz-span">金额</span>
-                                 <input type="text" name="" value="" id="je" placeholder="0.">
+                                 <input autocomplete="off" type="text" name="sum" value="" id="je" placeholder="0.">
                         </div>
                     </div>
                     <div class="col-md-6 col-cy">
                         <div class="col-zz">
                               <span clas="zz-span">成员</span>
                             <div class="add-input cy">
-                              <span>点击选择分类</span>
+                              <span>本人</span>
                                <img src="../../image/input-sj.png" alt="">
                             </div>
                               <ul class="mb-yc-cy">
-                                 <li class="mb-yc-bj"><span class="mb-yc-xz">点击选择分类1</span></li>
-                                  <li><span class="mb-yc-xz">点击选择分类2</span></li>
-                                   <li><span class="mb-yc-xz">点击选择分类3</span></li>
-                                    <li><span class="mb-yc-xz">点击选择分类4</span></li>
-                            </ul>
-                            <input type="hidden" name="" value="">
+                                  <%--<li class="mb-yc-bj"><span class="mb-yc-xz">点击选择分类1</span></li>
+                                   <li><span class="mb-yc-xz">点击选择分类2</span></li>
+                                    <li><span class="mb-yc-xz">点击选择分类3</span></li>
+                                     <li><span class="mb-yc-xz">点击选择分类4</span></li>--%>
+                               </ul>
+                            <input type="hidden" id="userid" name="perfactUser.userId" value="1">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-sj">
                            <div class="col-zz12">
-                                <span clas="zz-span">账户</span>
-                         <input type="text" name="date" id="datetimepicker" value="">
+                                <span clas="zz-span">时间</span>
+                         <input autocomplete="off" type="text" name="executionTime" id="datetimepicker" value="">
                         </div>
                     </div>
                 </div>
@@ -321,7 +326,7 @@
                     <div class="col-md-12 col-bz">
                         <div class="col-zz12">
                              <span clas="zz-span">备注</span>
-                             <textarea id="bz" cols="50" rows="2" placeholder="点击添加备注。。点击右侧图标添加单据"></textarea>
+                             <textarea autocomplete="off" id="tradeRemark" name="tradeRemark" cols="50" rows="2" placeholder="点击添加备注。。点击右侧图标添加单据"></textarea>
                         </div>
                        
                     </div>
@@ -329,7 +334,7 @@
             </form>
         </div>
         <div class="fl-tc">
-            <div class="col-i">
+           <%-- <div class="col-i">
                 <h3>职业收入</h3>
             </div>
              <div class="col-i-yc">
@@ -348,10 +353,14 @@
                        <li><span class="ces">工资收入</span></li> 
                        <li><span class="ces">利息收入</span></li>
                    </ul>     
-            </div>
+            </div>--%>
         </div>
     </div>
-      
+    <div class="waring">
+        测试
+    </div>
+    <%--<div class="err">
+        <div>--%>
     <!--添加面板 结束-->
     <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
@@ -360,20 +369,16 @@
     <script src="../../js/jquery.datetimepicker.js"></script>
 
     <script>
+    $(function () {
+        getSort(1);
+        getIndex();
+    })
     $(function(){
         $(".fl").mousedown(function(){
-              $(".fl-tc").toggle(300);
+              $(".fl-tc").toggle(300,function () {
+                  getSort(1);
+              });
 		});
-         $('.col-i').click(function(){
-              $(".col-i-yc").toggle(300);
-         })
-          $('.ces').click(function(){
-                var dan=$(this).text();
-                var sj=$(this).parent().parent().parent().prev().find("h3").text();
-                var fl=sj+"-->"+dan;
-                $(".fl").html(fl);
-                $(".fl-tc").toggle(300);
-        })
         $('#je').focus(function(){
                 $(this).addClass('jine');
             }).blur(function(){
@@ -387,39 +392,28 @@
         $(".zh").mousedown(function(){
               $(".mb-yc-zh").toggle();
 		});
-         $(".cy").mousedown(function(){
+        $(".cy").mousedown(function(){
+              getUser();
               $(".mb-yc-cy").toggle();
 		});
-        $('.mb-yc-xz').click(function(){
+
+       $('.mb-yc-xz').click(function(){
                 var dan=$(this).text();
                 $(this).parent().parent().prev().find("span").html(dan);
                 $(this).parent().parent().toggle();
+                $(".col-zh").find("input").val(dan);
         })
-          //生成时间
-          function getNowFormatDate() {
-            var date = new Date();
-            var seperator1 = "-";
-            var seperator2 = ":";
-            var month = date.getMonth() + 1;
-            var strDate = date.getDate();
-            if (month >= 1 && month <= 9) {
-                month = "0" + month;
-            }
-            if (strDate >= 0 && strDate <= 9) {
-                strDate = "0" + strDate;
-            }
-            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
-                    + " " + date.getHours() + seperator2 + date.getMinutes()
-                    + seperator2 + date.getSeconds();
-            return currentdate;
-        }
+
         $('#datetimepicker').datetimepicker();
-        $('#datetimepicker').datetimepicker({value:getNowFormatDate(),step:10});
-        $('#datetimepicker1').datetimepicker({
-            datepicker:false,
-            format:'H:i',
-            step:5
+       $('#datetimepicker').datetimepicker({value:getNowFormatDate(),step:10});
+
+      $('#datetimepicker').datetimepicker({
+             lang:'ch',
+             format:'Y-m-d H:i:s'
         });
+
+
+
       
        $('#bz').focus(function(){
             $(this).addClass('text-jine');
@@ -429,6 +423,21 @@
         $(".circle").click(function(){
            $(".symb").toggle(300);
            $(".tjumbotron").toggle(500);
+        })
+
+
+        $(".glyphicon-floppy-disk").click(function () {
+            saveTrade(0);
+        })
+        $(".glyphicon-plus").click(function () {
+            saveTrade(1);
+        })
+        $(".glyphicon-remove").click(function () {
+            saveTrade(3);
+        })
+        $('.inav li').click(function () {
+            $(this).siblings('li').removeClass('imark');
+            $(this).addClass('imark');
         })
     })
     
